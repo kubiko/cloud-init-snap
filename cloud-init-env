@@ -1,0 +1,4 @@
+PYTHONHOME=/snap/cloud-init/current/usr
+PYTHONPATH=${PYTHONHOME}/lib/python3/dist-packages:${PYTHONHOME}/lib/python3.10
+PYTHON=${PYTHONHOME}/bin/python3
+PATH=/snap/cloud-init/current/usr/bin:/usr/bin
