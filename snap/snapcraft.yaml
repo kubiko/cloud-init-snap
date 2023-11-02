@@ -1,0 +1,60 @@
+name: cloud-init
+base: core22
+summary: cloud-init the standard for customising cloud instances as snap
+description: |
+  Cloud images are operating system templates and every instance starts
+  out as an identical clone of every other instance. It is the user data
+  that gives every cloud instance its personality and cloud-init is the tool
+  that applies user data to your instances automatically.
+  As cloud init cannot run fully confined, cloud init is invoked
+  through the hooks which are part of the base snap
+
+adopt-info: cloud-init
+grade: stable
+confinement: strict
+
+parts:
+  cloud-init:
+    plugin: nil
+    organize:
+      lib/systemd/: usr/lib/systemd/
+    stage-packages:
+      - cloud-guest-utils
+      - cloud-init
+      - cloud-utils
+      - libpython3-stdlib
+      - libpython3.10-minimal
+      - libpython3.10-stdlib
+      - netplan.io
+      - python3
+      - python3.10-minimal
+      - python3-minimal
+      - python3-configobj
+      - python3-dbus
+      - python3-jinja2
+      - python3-jsonpatch
+      - python3-jsonschema
+      - python3-netifaces
+      - python3-oauthlib
+      - python3-requests
+      - python3-serial
+      - python3-yaml
+      - util-linux
+    override-build: |
+      craftctl default
+      version=$(basename ${CRAFT_PART_BUILD}/../stage_packages/cloud-init_* | sed 's/cloud-init_\(.*\)_all.deb/\1/')
+      craftctl set version=${version}
+      install -D -m 644 \
+              ${CRAFT_PROJECT_DIR}/cloud-init-env \
+              ${CRAFT_PART_INSTALL}/etc/cloud/environment
+      # gather all executables to usr/bin
+      for b in bin sbin usr/sbin
+      do
+        mv ${CRAFT_PART_INSTALL}/${b}/* ${CRAFT_PART_INSTALL}/usr/bin
+      done
+    stage:
+      - -bin
+      - -lib
+      - -sbin
+      - -usr/bin/qemu*
+      - -usr/sbin
