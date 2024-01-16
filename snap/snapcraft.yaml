@@ -70,4 +70,7 @@ parts:
       - -lib
       - -sbin
       - -usr/bin/qemu*
-      - -usr/sbin
+      - -usr/lib/*/libaio.*
+      - -usr/lib/*/libfuse3.*
+      - -usr/lib/*/libnuma.*
+      - -usr/lib/*/liburing*
