@@ -22,22 +22,32 @@ parts:
       - cloud-guest-utils
       - cloud-init
       - cloud-utils
+      - libpsl5
       - libpython3-stdlib
-      - libpython3.10-minimal
-      - libpython3.10-stdlib
-      - netplan.io
+      - libpython3.11-minimal
+      - libpython3.11-stdlib
       - python3
-      - python3.10-minimal
       - python3-minimal
+      - python3.11
+      - python3.11-minimal
+      - python3-certifi
+      - python3-cffi-backend
+      - python3-chardet
       - python3-configobj
       - python3-dbus
+      - python3-idna
       - python3-jinja2
+      - python3-json-pointer
       - python3-jsonpatch
       - python3-jsonschema
+      - python3-markupsafe
       - python3-netifaces
+      - python3-netplan
       - python3-oauthlib
       - python3-requests
       - python3-serial
+      - python3-six
+      - python3-urllib3
       - python3-yaml
       - util-linux
     override-build: |
