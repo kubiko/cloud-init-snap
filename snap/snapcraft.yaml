@@ -1,5 +1,5 @@
 name: cloud-init
-base: core22
+base: core24
 summary: cloud-init the standard for customising cloud instances as snap
 description: |
   Cloud images are operating system templates and every instance starts
