@@ -1,4 +1,6 @@
-PYTHONHOME=/snap/cloud-init/current/usr
-PYTHONPATH=${PYTHONHOME}/lib/python3/dist-packages:${PYTHONHOME}/lib/python3.10
-PYTHON=${PYTHONHOME}/bin/python3
-PATH=/snap/cloud-init/current/usr/bin:/usr/bin
+PYTHONHOME="/snap/cloud-init/current/usr"
+PYTHON="${PYTHONHOME}/bin/python3"
+lib_python3="${PYTHONHOME}/lib/python3"
+PYTHONPATH="${lib_python3}:${lib_python3}.10:${lib_python3}.11:${lib_python3}.12:${lib_python3}.11/lib-dynload"
+PYTHONIOENCODING="utf-8"
+PATH="/snap/cloud-init/current/usr/bin:/snap/cloud-init/current/usr/sbin:/usr/bin:/usr/sbin"
