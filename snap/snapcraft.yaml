@@ -58,8 +58,7 @@ parts:
               ${CRAFT_PROJECT_DIR}/cloud-init-env \
               ${CRAFT_PART_INSTALL}/etc/cloud/environment
       # add LD_LIBRARY_PATH, since it contains arch triplet, it's easier to do it here
-      echo "LD_LIBRARY_PATH=\"/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:"  \
-           ":\"/snap/cloud-init/current/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}\"" \
+      echo "LD_LIBRARY_PATH=\"/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:/snap/cloud-init/current/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}\"" \
            >> ${CRAFT_PART_INSTALL}/etc/cloud/environment
       # gather executables and libraries
       mv ${CRAFT_PART_INSTALL}/bin/* ${CRAFT_PART_INSTALL}/usr/bin
